@@ -59,6 +59,9 @@ export class WorkoutTableviewComponentComponent {
       this.users = JSON.parse(savedUsers);
       this.userData = this.users;
       this.datasource = new MatTableDataSource(this.users);
+    }else{
+      localStorage.setItem('users', JSON.stringify(this.users)); 
+      this.datasource = new MatTableDataSource(this.users);
     }
   }
 
