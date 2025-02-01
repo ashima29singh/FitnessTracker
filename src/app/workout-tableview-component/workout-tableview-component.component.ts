@@ -54,6 +54,10 @@ export class WorkoutTableviewComponentComponent {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
+    this.fetchUsers();
+  }
+
+  fetchUsers() {
     const savedUsers = localStorage.getItem('users');
     if (savedUsers) {
       this.users = JSON.parse(savedUsers);
@@ -86,10 +90,9 @@ export class WorkoutTableviewComponentComponent {
         ]
       });
     }
-    console.log(this.users);
     localStorage.setItem('users', JSON.stringify(this.users)); 
-    this.userData = this.users;
-    this.datasource = new MatTableDataSource(this.users);
+    this.fetchUsers();
+    this.datasource.paginator = this.paginator;
   }
 
 

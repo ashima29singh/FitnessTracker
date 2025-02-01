@@ -24,13 +24,10 @@ export class AddWorkoutComponentComponent {
   }
 
   submitForm() {
-    // Handle form submission
-    console.log('Form Data:', this.formData);
     if (this.formData.name && this.formData.workoutTime && this.formData.workoutType) {
-      this.userAdded.emit(this.formData); // Send user data to parent
+      this.userAdded.emit(this.formData);
       this.formData = { name: '', workoutTime: '', workoutType: null }; 
       this.closeModal();
     }
-    this.closeModal(); // Close the modal after submission
   }
 }
