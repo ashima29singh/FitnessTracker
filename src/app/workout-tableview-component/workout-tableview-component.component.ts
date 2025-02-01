@@ -106,6 +106,7 @@ export class WorkoutTableviewComponentComponent {
       )
     );
     this.datasource = new MatTableDataSource(this.users);
+    this.datasource.paginator = this.paginator;
   }
 
   applyFilter(filterValue) {
@@ -117,7 +118,7 @@ export class WorkoutTableviewComponentComponent {
       this.users = this.users.filter(user => user.workouts.some(workout => workout.type === filterValue));
       this.datasource = new MatTableDataSource(this.users);
     }
-    // this.datasource.filter=filterValue.toLowerCase();
+    this.datasource.paginator = this.paginator;
   }
 
   ngAfterViewInit() {
