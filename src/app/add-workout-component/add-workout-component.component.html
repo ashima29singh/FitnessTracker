@@ -1,0 +1,33 @@
+
+  <div class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 flex items-center justify-center "*ngIf="isOpen">
+    <div class="bg-white p-6 rounded shadow-lg max-w-sm w-full">
+      <div>
+        <h2 class="text-xl font-semibold mb-4 text-center">Modal Form</h2>
+    <form (ngSubmit)="submitForm()">
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700">User Name</label>
+        <input id="name" [(ngModel)]="formData.name" name="name" type="text" class="w-full p-2 mt-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your name" required />
+      </div>
+      <div class="mb-4">
+        <label for="workoutType" class="block text-gray-700">Workout Type</label>
+        <select id="workoutType" [(ngModel)]="formData.workoutType" name="workoutType"
+                class="w-full p-2 mt-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500" required>
+          <option value="" disabled selected>Select a type</option>
+          <option *ngFor="let option of workoutTypes" [value]="option">{{ option }}</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="workoutTime" class="block text-gray-700">Workout Time</label>
+        <input id="workoutTime" [(ngModel)]="formData.workoutTime" name="workoutTime" type="number" min="1"
+               class="w-full p-2 mt-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+               placeholder="Enter your workout Time" required />
+      </div>
+      <div class="flex justify-between">
+        <button type="submit" class="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition">Submit</button>
+        <button type="button" (click)="closeModal()" class="bg-gray-500 text-white py-2 px-6 rounded-lg hover:bg-gray-700 transition">Cancel</button>
+      </div>
+    </form>
+
+      </div>
+    </div>
+  </div>
